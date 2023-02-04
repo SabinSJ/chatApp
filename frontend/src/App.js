@@ -13,6 +13,8 @@ import { setContext } from "@apollo/client/link/context";
 import history from "./Routes/history";
 import Router from "./Routes/Router";
 
+import "./Assets/Styles/App.scss";
+
 function App() {
   const httpLink = createHttpLink({
     uri: process.env.REACT_APP_URI,
@@ -37,11 +39,17 @@ function App() {
 
   return (
     <>
-      <BrowserRouter history={history}>
-        <ApolloProvider client={client}>
-          <Router />
-        </ApolloProvider>
-      </BrowserRouter>
+      {/* <div className="container-background"> */}
+      {/* <div className="container"> */}
+      <div style={{ display: "flex", flexDirection: "row", height: "100vh" }}>
+        <BrowserRouter history={history}>
+          <ApolloProvider client={client}>
+            <Router />
+          </ApolloProvider>
+        </BrowserRouter>
+      </div>
+      {/* </div> */}
+      {/* </div> */}
     </>
   );
 }

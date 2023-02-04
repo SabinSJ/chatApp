@@ -1,0 +1,38 @@
+
+.edit-profile-image-container{
+    display: flex;
+    
+    flex-direction: row;
+
+    gap: 25px;
+}
+
+.edit-profile-image-username-and-update-image-button{
+    display: flex;
+
+    flex-direction: column  ;
+}
+
+.edit-profile-image-button{
+
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    padding: 0;
+
+    font-weight: 600;
+
+    color: rgb(0, 149, 247);
+}
+
+.edit-profile-image-button:hover{
+    color: rgb(0, 55, 155);
+}
+
+.edit-profile-settings-default-image{
+    width: 38px;
+    height: 38px;
+    
+    border-radius: 50%;
+}

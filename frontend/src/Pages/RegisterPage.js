@@ -74,7 +74,7 @@ const RegisterPage = () => {
               onChange={(val) => {
                 setFormValues({ ...formValues, username: val });
               }}
-              value={formValues.uesrname}
+              value={formValues.username}
             />
             <InputField
               title="email"

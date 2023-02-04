@@ -1,60 +1,158 @@
 
 
 .navbar-container{
-    width: 100%;
-    min-height: 60px;
+    min-width: 335px;
+    height: 100%;
 
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: space-between;
     flex-direction: column;
 
-    border-bottom: 1px solid rgb(219, 219, 219);
+    border-right: 1px solid rgb(219, 219, 219);
 
     z-index: 3;
 }
 
 .navbar-content{
-  width: 70%;
-
   display: flex;
-  justify-content: space-around;
+
+  flex-direction: column;
+
+  gap: 50px;
+  padding: 30px 0 0 30px;
 }
 
 .navbar-logo-text{
-    background-color: red;
+    font-size: 26px;
 
-    font-size: 18px;
+    padding-left: 10px;
+
+    cursor: pointer;
 }
-
-// .MuiFormControl-root{
-//   height: 36px;
-// }
-
-.MuiInputBase-input {
-    border-radius: 8px !important;
-    background-color: rgb(239, 239, 239) !important;
-    border: 1px solid #d0d5dd !important;
-    font-size: 16px !important;
-    padding: 10px 12px !important;
-    font-family: 'Inter' !important;
-    
-    width: 268px !important;
-    // height: 36px !important;
-    transition: border-color 0.3s ease-in-out;
-  }
 
 .navbar-buttons-group{
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
   justify-content: space-around;
+
+  gap: 20px;
 
   width: 270px;
 }
 
 .navbar-user-logo{
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 
   border-radius: 50%;
+}
+
+.navbar-button{
+  display: flex;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: 10px;
+  padding-left: 10px;
+
+  width: 100%;
+  min-height: 48px;
+
+  border-radius: 20px;
+
+  cursor: pointer;
+
+}
+
+.navbar-button:hover{
+  background-color: rgb(250, 250, 250);
+  // background-color: blueviolet;
+
+}
+
+.navbar-button-text{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-hamburger-container{
+  position: relative;
+
+  padding: 0 0 30px 30px;
+}
+
+.navbar-hamburger-button{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding-left: 10px;
+  gap: 10px;
+  border-radius: 20px;
+
+  width: 270px;
+  min-height: 48px;
+
+  cursor: pointer;
+}
+.navbar-hamburger-button:hover{
+  background-color: rgb(250, 250, 250);
+  // background-color: blueviolet;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.dropdown-content{
+  display: none;
+}
+
+.dropdown-content-show {
+  display: flex;
+
+  flex-direction: column;
+
+  position: absolute;
+  // background-color: #f1f1f1;
+  min-width: 240px;
+  // height: 200px;
+
+  bottom: 100px;
+
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.navbar-dropdown-button{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-left: 15px;
+  padding-right: 15px;
+
+  width: auto;
+  height: 45px;
+
+  border-radius: 5px;
+
+  background-color: #ffffff;
+
+  cursor: pointer;
+}
+
+.navbar-dropdown-button:hover{
+  background-color: rgb(250, 250, 250);
 }

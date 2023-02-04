@@ -1,0 +1,22 @@
+
+#darkMode {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    padding-left: 15px;
+    padding-right: 15px;
+  
+    width: auto;
+    height: 45px;
+  
+    border-radius: 5px;
+  
+    background-color: #ffffff;
+  
+    cursor: pointer;
+  }
+
+  #darkMode:hover{
+    background-color: rgb(250, 250, 250);
+  }

@@ -69,7 +69,7 @@ const LoginPage = () => {
             >
               <InputField
                 title="email"
-                type="texet"
+                type="text"
                 onChange={(val) => {
                   setFormValues({ ...formValues, username: val });
                 }}

@@ -1,0 +1,132 @@
+
+
+
+.profile-settings-container{
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+    width: 100%;
+}
+
+.profile-settings-image-container{
+    display: flex;
+
+    flex-direction: row;
+
+    // gap: 25px;
+    gap: 70px;
+
+    margin: 32px 0 0;
+
+    width: 70%;
+    max-height: 100px;
+}
+
+.profile-settings-default-image{
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+}
+
+.profile-settings-name-container, .profile-settings-submit-button-container{
+    width: 70%;
+    // height: 100px;
+}
+
+.profile-settings-name-and-update-image-button{
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.profile-settings-update-image-button{
+
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    padding: 0;
+
+    font-weight: 600;
+
+    color: rgb(0, 149, 247);
+}
+
+.profile-settings-update-image-button:hover{
+    color: rgb(0, 55, 155);
+}
+
+.profile-settings-gender-dropdown-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 25px;
+    
+    width: 70%;
+}
+
+.profile-settings-gender-label{
+    font-weight: 600;
+    
+    width: 73px !important;
+}
+
+.profile-settings-gender-dropdown{
+    width: 60%;
+    height: 37px;
+
+    border: 1px solid #d0d5dd;
+    border-radius: 7px;
+}
+
+.profile-settings-save-changes-button:hover{
+    background: rgb(24,119,242);
+}
+
+.profile-settings-save-changes-button{
+    
+    width: 77px;
+    height: 32px;
+
+    margin-left: 98px;
+
+    color: white;
+    font-weight: 600;
+
+    background: rgb(0,149,246);
+    border: none;
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+.profile-settings-save-changes-button-not-completed{
+    width: 77px;
+    height: 32px;
+
+    margin-left: 98px;
+
+    background: none;
+    border: none;
+    background-color: rgb(0, 149, 246);
+    box-sizing: border-box;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+    color: #ffffff;
+
+    padding: 7px 16px;
+
+    pointer-events: none;
+    opacity: .7;
+}

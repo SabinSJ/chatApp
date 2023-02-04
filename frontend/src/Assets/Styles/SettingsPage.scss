@@ -1,0 +1,23 @@
+
+.settings-page-right-section{
+    display: flex;
+    justify-content: center;
+
+    background: rgb(250, 250, 250);
+
+    width: 100%;
+    height: 100vh;
+}
+
+.settings-page-container{
+    display: flex;
+
+    margin: 30px auto 0;
+
+    border: 1px solid rgb(219, 219, 219);
+    background: rgb(256, 256, 256);
+
+    // width: 55%;
+    max-width: 935px;
+    width: 100%;
+}

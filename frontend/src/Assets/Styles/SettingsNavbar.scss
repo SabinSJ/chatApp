@@ -1,0 +1,90 @@
+
+
+.settings-navbar-container{
+    min-width: 235px;
+    height: 100%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+
+    border-right: 1px solid rgb(219, 219, 219);
+
+    z-index: 3;
+}
+
+.settings-navbar-content{
+  display: flex;
+
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 50px;
+}
+
+.settings-navbar-logo-text{
+    font-size: 26px;
+
+    padding-left: 10px;
+
+    cursor: pointer;
+}
+
+.settings-navbar-buttons-group{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-around;
+
+//   gap: 20px;
+
+//   width: 270px;
+    width: 100%;
+}
+
+.settings-navbar-user-logo{
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+}
+
+.settings-navbar-button{
+  display: flex;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: 10px;
+  padding-left: 20px;
+
+  width: 90%;
+  min-height: 48px;
+
+  cursor: pointer;
+
+  &:focus{
+    border-left: 2px solid rgb(0, 0, 0);
+  }
+
+}
+
+.settings-navbar-button:hover{
+  background-color: rgb(250, 250, 250);
+  // background-color: blueviolet;
+
+}
+
+.settings-navbar-button-text{
+  display: flex;
+  align-items: flex-start;
+
+  width: 100%;
+}
+
+// .settings-navbar-button:focus{
+    
+// }

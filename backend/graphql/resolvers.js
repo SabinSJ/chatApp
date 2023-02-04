@@ -5,6 +5,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+const fs = require("fs");
+
 module.exports = {
   Query: {
     getUsers: async (_, __, context) => {
@@ -20,10 +22,53 @@ module.exports = {
         });
       }
       try {
-        console.log("user", user);
         const users = await User.findAll();
 
         return users;
+      } catch (err) {
+        throw err;
+      }
+    },
+    getPersonalData: async (_, args) => {
+      const { id } = args;
+
+      try {
+        const user = await User.findOne({
+          where: { id },
+        });
+
+        if (user) {
+          const buf = Buffer.from(user.dataValues.profileImage, "base64");
+
+          return {
+            profileImage: buf.toString(),
+            name: user.dataValues.name,
+            username: user.dataValues.username,
+            bio: user.dataValues.bio,
+            email: user.dataValues.email,
+            gender: user.dataValues.gender,
+          };
+        }
+      } catch (err) {
+        throw err;
+      }
+    },
+    getProfilePicture: async (_, args) => {
+      const { id } = args;
+
+      try {
+        const user = await User.findOne({
+          where: { id },
+          attributes: ["profileImage"],
+        });
+
+        if (user) {
+          const buf = Buffer.from(user.dataValues.profileImage, "base64");
+
+          return {
+            profileImage: buf.toString(),
+          };
+        }
       } catch (err) {
         throw err;
       }
@@ -112,13 +157,54 @@ module.exports = {
 
         const token = await jwt.sign(
           {
-            username,
+            id: user.id,
           },
           process.env.JWT_SECRET,
           { expiresIn: "1d" }
         );
 
         return { status: 200, message: token };
+      } catch (err) {
+        throw err;
+      }
+    },
+    updateUser: async (_, args) => {
+      const { id, profileImage, name, username, bio, email, gender } =
+        args.input;
+
+      let errors = {};
+
+      const buffer = Buffer.from(
+        profileImage.substring(profileImage.indexOf(",") + 1)
+      );
+
+      if (buffer.length > 1048576) {
+        return { status: 200, message: "Image size is too big!" };
+      }
+
+      try {
+        const user = await User.update(
+          {
+            profileImage: profileImage,
+            name: name,
+            username: username,
+            bio: bio,
+            email: email,
+            gender: gender,
+          },
+          {
+            where: { id },
+          }
+        );
+
+        if (user) {
+          return { status: 200, message: "user updated" };
+        } else {
+          throw new UserInputError(
+            "Something went wrong! Please try again later...",
+            { errors }
+          );
+        }
       } catch (err) {
         throw err;
       }

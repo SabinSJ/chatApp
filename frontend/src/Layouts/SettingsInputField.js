@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import TextField from "@mui/material/TextField";
+import InputBase from "@mui/material/InputBase";
 import FormControl from "@mui/material/FormControl";
 
-import "../Assets/Styles/Inputs/InputField.scss";
+import "../Assets/Styles/Inputs/SearchInputField.scss";
 
-const InputField = (props) => {
+const SettingsInputField = (props) => {
   const {
     title,
     placeholder,
@@ -22,17 +22,23 @@ const InputField = (props) => {
 
   return (
     <div className="input-field-container">
-      {/* {title && <p className="title">{title}</p>} */}
+      {title && <p className="title">{title}</p>}
 
-      <FormControl className="form-control-input-field">
-        <TextField
-          label={title}
-          readOnly={readOnly}
+      <FormControl className="form-control-input-base">
+        <InputBase
+          // readOnly={readonly}
+          // sx={
+          //   disabled && {
+          //     pointerEvents: 'none',
+          //     direction: 'rtl',
+          //     // overflow: 'auto',
+          //   }
+          // }
           className={errorMessage ? "error" : ""}
           onChange={(e) => props.onChange(e.target.value)}
           multiline={multiline ? multiline : false}
           rows={rows ? rows : 1}
-          type={type && !passwordVisibility ? type : text}
+          type={type && !passwordVisibility ? type : "text"}
           value={props.value}
           inputProps={{ maxLength: maxLength ? maxLength : undefined }}
           placeholder={placeholder !== undefined ? placeholder : ""}
@@ -42,4 +48,4 @@ const InputField = (props) => {
   );
 };
 
-export default InputField;
+export default SettingsInputField;

@@ -7,6 +7,36 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root {
+  --black: rgb(0, 0, 0);
+  --white: rgb(255, 255, 255);
+}
+
+body {
+  background: var(--background-color);
+  color: var(--text-color);
+  font-weight: var(--font-weight);
+  /* transition: background 0.3s ease-in-out, color 0.6s ease-in-out; */
+}
+
+body.light {
+  --background-color: var(--white);
+  --text-color: var(--black);
+  --font-weight: 400;
+  /* --image: url("../day.jpg"); */
+}
+
+body.dark {
+  --background-color: var(--black);
+  --text-color: var(--white);
+  --font-weight: 500;
+  /* --image: url("../night.jpg"); */
+}
+
+.dropdown-content-show{
+  background: var(--background-color);
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
