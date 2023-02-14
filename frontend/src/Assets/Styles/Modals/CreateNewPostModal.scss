@@ -1,0 +1,238 @@
+
+.create-new-post-modal{
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    padding: 0px;
+
+    width: 100%;
+  
+    background: rgba(52, 64, 84, 0.6);
+  
+    backdrop-filter: blur(8px);
+}
+
+.create-new-post-modal-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    width: 718px;
+    height: 761px;
+  
+    background: #ffffff;
+
+    border-radius: 12px;
+
+    .create-new-post-top-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        border-bottom: 1px solid rgb(219, 219, 219);
+
+        width: 100%;
+
+        .create-new-post-discard-button{
+            background: none;
+            border: none;
+
+            margin-left: 8px;
+            
+            cursor: pointer;
+        }
+        
+        .create-new-post-title{
+            padding: 10px 0;
+    
+            width: 100%;
+        
+            font-weight: 600;
+            text-align: center;
+            margin: 0;
+        }
+
+        .create-new-post-next-button{
+            background: none;
+            border: none;
+
+            padding: 16px;
+
+            color: rgb(24, 119, 242);
+
+            cursor: pointer;
+        }
+  
+        .create-new-post-next-button:hover{
+            color: rgb(0, 55, 131);
+        }
+    }
+  
+
+    .create-new-post-content{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        height: 100%;
+
+        .create-new-post-added-image{
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        .create-new-post-description-section{
+            width: 30%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            gap: 20px;
+
+            .create-new-post-user-image-and-username{
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+
+                padding: 20px 0 0 20px;
+                gap: 12px;
+
+                width: 80%;
+                height: 30px;
+
+                .create-new-post-profile-image{
+                    width: 28px;
+                    height: 28px;
+
+                    border-radius: 50%;
+                    border: 1px solid rgb(219, 219, 219)
+                }
+
+                .create-new-post-username{
+
+                    width: 100%;
+
+                    margin: 0;
+                }
+            }
+            
+            .create-new-post-description-input-container{
+                display: flex;
+                flex-direction: column;
+
+                gap: 20px;
+
+                width: 100%;
+                // height: 168px;
+
+                .create-new-post-description-input{
+                    width: 100%;
+                    max-height: 168px;
+                    min-height: 168px;
+
+                    overflow-y: auto;
+                }
+
+                .MuiFormControl-root{
+                    width: 100%;
+                }
+                
+                .MuiInputBase-input {
+                    position: relative;
+                    background-color: white !important;
+                    border: 1px solid #d0d5dd !important;
+                    font-size: 16px !important;
+                    padding: 10px 12px !important;
+                    font-family: 'Inter' !important;
+                    height: 15px;
+                    transition: border-color 0.3s ease-in-out;
+                
+                    // &:focus {
+                    //   border: 1px solid black !important;
+                    // }
+                  }
+
+                  .create-new-post-emoji-button-and-nr-characters{
+
+                    display: flex;
+                    flex-direction: row;
+
+                    width: 100%;
+
+                    .create-new-post-emoji-button-container{
+
+                        width: 100%;
+
+                        .create-new-post-open-emoji-list{
+                          background: none;
+                          border: none;
+      
+                          width: 20px;
+                          height: 20px;
+      
+                          cursor: pointer;
+                        }
+                    }
+    
+                      .create-new-post-number-of-description-characters{
+                        color: rgb(199, 199, 199);
+
+                        font-size: 14px;
+
+                        margin: 0;
+
+                        margin-right: 10px;
+                      }
+                  }
+            }
+        }
+
+        .create-new-post-dropzone{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            height: 100%;
+
+            .create-new-post-add-text{
+                margin: 0;
+    
+                font-weight: 400;
+                font-size: 18px;
+            }
+    
+            .create-new-post-add-button{
+                background: rgb(0, 149, 246);
+                border: none;
+                border-radius: 8px;
+    
+                padding: 7px 16px;
+    
+                font-size: 14px;
+                color: #ffffff;
+    
+                cursor: pointer;
+            }
+    
+            .create-new-post-add-button:hover{
+                background: rgb(24, 119, 242);
+            }
+        }
+    }
+}

@@ -1,0 +1,50 @@
+
+.post-modal{
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    padding: 0px;
+
+    width: 100%;
+  
+    background: rgba(52, 64, 84, 0.6);
+  
+    backdrop-filter: blur(8px);
+}
+
+.post-modal-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+  
+    width: 1128px;
+    height: 700px;
+  
+    background: #ffffff;
+        
+        .post-modal-container{
+            display: flex;
+            align-items: center;
+
+            background-color: black;
+            
+            border-bottom: 1px solid rgb(219, 219, 219);
+            
+            max-width: 645px;
+            height: 700px;
+            
+            .post-modal-content{
+                width: 645px;
+                height: 645px;
+                
+                object-fit: cover;
+            }
+        }
+  
+
+}

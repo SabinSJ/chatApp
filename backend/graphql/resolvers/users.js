@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Post } = require("../../models");
 const { UserInputError, AuthenticationError } = require("apollo-server");
 const { Op } = require("sequelize");
 const bcrypt = require("bcryptjs");
@@ -9,22 +9,34 @@ const fs = require("fs");
 
 module.exports = {
   Query: {
-    getUsers: async (_, __, context) => {
-      let user = {};
-      if (context.req && context.req.headers.authorization) {
-        const token = context.req.headers.authorization.split("Bearer ")[1];
-        jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
-          if (err) {
-            throw new AuthenticationError("Unauthenticated");
-          }
+    getUsers: async (_, __, { user }) => {
+      if (!user) throw new AuthenticationError("Unauthenticated");
 
-          user = decodedToken;
-        });
-      }
       try {
         const users = await User.findAll();
 
         return users;
+      } catch (err) {
+        throw err;
+      }
+    },
+    getUser: async (_, args) => {
+      const { username } = args;
+
+      try {
+        const user = await User.findOne({
+          where: { username: username },
+          attributes: ["profileImage", "bio"],
+          raw: true,
+          nest: true,
+        });
+
+        const buf = Buffer.from(user.profileImage, "base64");
+
+        return {
+          profileImage: buf.toString(),
+          bio: user.bio,
+        };
       } catch (err) {
         throw err;
       }
@@ -158,6 +170,7 @@ module.exports = {
         const token = await jwt.sign(
           {
             id: user.id,
+            username: user.username,
           },
           process.env.JWT_SECRET,
           { expiresIn: "1d" }

@@ -22,6 +22,26 @@ export const GET_PERSONAL_DATA = gql`
   }
 `;
 
+export const GET_USER = gql`
+  query getUser($username: String) {
+    getUser(username: $username) {
+      profileImage
+      bio
+    }
+  }
+`;
+
+export const GET_USER_POSTS = gql`
+  query getUserPosts($username: String) {
+    getUserPosts(username: $username) {
+      content
+      content_type
+      content_description
+      content_location
+    }
+  }
+`;
+
 export const GET_PROFILE_PICTURE = gql`
   query getProfilePicture($id: Int) {
     getProfilePicture(id: $id) {
@@ -33,6 +53,15 @@ export const GET_PROFILE_PICTURE = gql`
 export const UPDATE_USER = gql`
   mutation updateUser($input: UpdateInput) {
     updateUser(input: $input) {
+      status
+      message
+    }
+  }
+`;
+
+export const CREATE_POST = gql`
+  mutation createNewPost($input: CreatePostInput) {
+    createNewPost(input: $input) {
       status
       message
     }

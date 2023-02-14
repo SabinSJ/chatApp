@@ -19,10 +19,30 @@ module.exports = gql`
     profileImage: String
   }
 
+  type getUserPosts {
+    username: String
+    content: String
+    content_type: String
+    content_description: String
+    content_location: String
+  }
+
+  type getUser {
+    # username: String
+    profileImage: String
+    bio: String
+    # content: String
+    # content_type: String
+    # content_description: String
+    # content_location: String
+  }
+
   type Query {
     getUsers: [User]!
     getPersonalData(id: Int): User
     getProfilePicture(id: Int): getProfilePicture
+    getUser(username: String): getUser
+    getUserPosts(username: String): [getUserPosts]
   }
 
   input RegisterInput {
@@ -47,9 +67,17 @@ module.exports = gql`
     gender: String
   }
 
+  input CreatePostInput {
+    content: String
+    content_type: String
+    content_description: String
+    content_location: String
+  }
+
   type Mutation {
     register(input: RegisterInput): Status!
     login(input: LoginInput): Status!
     updateUser(input: UpdateInput): Status!
+    createNewPost(input: CreatePostInput): Status!
   }
 `;

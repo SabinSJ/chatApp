@@ -4,14 +4,23 @@
     min-width: 335px;
     height: 100%;
 
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-direction: column;
-
-    border-right: 1px solid rgb(219, 219, 219);
-
     z-index: 3;
+}
+
+.navbar-sticky{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+
+  position: fixed;
+  overflow: hidden;
+
+  min-width: 335px;
+  height: 100%;
+
+  border-right: 1px solid rgb(219, 219, 219);
+  
 }
 
 .navbar-content{

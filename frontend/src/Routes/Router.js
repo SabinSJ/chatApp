@@ -9,6 +9,7 @@ import SettingsPage from "../Pages/SettingsPage";
 import Navbar from "../Layouts/Navbar";
 
 import AuthenticationRoute from "./AuthenticationRoute";
+import UserPage from "../Pages/UserPage";
 
 const Router = (props) => {
   return (
@@ -21,6 +22,20 @@ const Router = (props) => {
             <>
               <Navbar />
               <HomePage />
+              {/* <Footer /> */}
+            </>
+          }
+        />
+      </Route>
+
+      <Route exact path="/" element={<AuthenticationRoute />}>
+        <Route
+          exact
+          path="/:username"
+          element={
+            <>
+              <Navbar />
+              <UserPage />
               {/* <Footer /> */}
             </>
           }

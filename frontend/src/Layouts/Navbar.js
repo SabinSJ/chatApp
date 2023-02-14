@@ -14,6 +14,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import AnnouncementIcon from "@mui/icons-material/Announcement";
 
 import DarkModeButton from "../Components/DarkModeButton";
+import CreateNewPostModal from "../Components/Modals/CreateNewPostModal";
 
 import { GET_PROFILE_PICTURE } from "../Services/Queries/user";
 
@@ -46,6 +47,8 @@ const Navbar = () => {
 
   const [profileImage, setProfileImage] = useState("");
   const [openDropdown, setOpenDropdown] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+
   let user_token = window.localStorage.getItem("token");
 
   const navigate = useNavigate();
@@ -105,87 +108,113 @@ const Navbar = () => {
   };
 
   return (
-    <div className={"navbar-container"}>
-      <div className={"navbar-content"}>
-        <div className={"navbar-logo-text"} onClick={() => navigate("/")}>
-          SnapTalk
-        </div>
-        <div className={"navbar-buttons-group"}>
-          <div className={"navbar-button"} onClick={() => navigate("/")}>
-            <HomeIcon sx={{ fontSize: "35px" }} />
-            <div className="navbar-button-text">Home</div>
+    <>
+      <div className={"navbar-container"}>
+        <div className={"navbar-sticky"}>
+          <div className={"navbar-content"}>
+            <div className={"navbar-logo-text"} onClick={() => navigate("/")}>
+              SnapTalk
+            </div>
+            <div className={"navbar-buttons-group"}>
+              <div className={"navbar-button"} onClick={() => navigate("/")}>
+                <HomeIcon sx={{ fontSize: "35px" }} />
+                <div className="navbar-button-text">Home</div>
+              </div>
+
+              <div className={"navbar-button"}>
+                <SearchIcon sx={{ fontSize: "25px" }} />
+                <div className="navbar-button-text">Search</div>
+              </div>
+
+              <div className={"navbar-button"}>
+                <ChatIcon sx={{ fontSize: "25px" }} />
+                <div className="navbar-button-text">Messages</div>
+              </div>
+
+              <div className={"navbar-button"}>
+                <FavoriteBorderIcon sx={{ fontSize: "25px" }} />
+                <div className="navbar-button-text">Notifications</div>
+              </div>
+
+              <div className={"navbar-button"}>
+                <AddCircleOutlineIcon sx={{ fontSize: "25px" }} />
+                <div
+                  className="navbar-button-text"
+                  onClick={() => setOpenModal(true)}
+                >
+                  Create
+                </div>
+              </div>
+
+              <div className={"navbar-button"}>
+                {profileImage.length !== 0 ? (
+                  <img
+                    className={"navbar-user-logo"}
+                    src={profileImage}
+                    alt={"user"}
+                  />
+                ) : (
+                  <img
+                    className={"navbar-user-logo"}
+                    src={defaultUserLogo}
+                    alt={"default"}
+                  />
+                )}
+                <div
+                  className="navbar-button-text"
+                  onClick={() =>
+                    navigate(
+                      `/${
+                        jwt_decode(window.localStorage.getItem("token"))
+                          .username
+                      }`
+                    )
+                  }
+                >
+                  Profile
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className={"navbar-button"}>
-            <SearchIcon sx={{ fontSize: "25px" }} />
-            <div className="navbar-button-text">Search</div>
-          </div>
+          <div className="navbar-hamburger-container">
+            <div
+              className="navbar-hamburger-button"
+              onClick={handleOpenDropdown}
+            >
+              <MenuIcon sx={{ fontSize: "35px" }} />
+              <div className="navbar-button-text">More</div>
+            </div>
 
-          <div className={"navbar-button"}>
-            <ChatIcon sx={{ fontSize: "25px" }} />
-            <div className="navbar-button-text">Messages</div>
-          </div>
+            <div
+              id="dropdown"
+              ref={domNode}
+              className={
+                openDropdown ? "dropdown-content-show" : "dropdown-content"
+              }
+            >
+              <div
+                className="navbar-dropdown-button"
+                onClick={() => navigateTo("/settings")}
+              >
+                Settings <SettingsIcon />
+              </div>
 
-          <div className={"navbar-button"}>
-            <FavoriteBorderIcon sx={{ fontSize: "25px" }} />
-            <div className="navbar-button-text">Notifications</div>
-          </div>
+              <DarkModeButton />
 
-          <div className={"navbar-button"}>
-            <AddCircleOutlineIcon sx={{ fontSize: "25px" }} />
-            <div className="navbar-button-text">Create</div>
-          </div>
-
-          <div className={"navbar-button"}>
-            {profileImage.length !== 0 ? (
-              <img
-                className={"navbar-user-logo"}
-                src={profileImage}
-                alt={"user"}
-              />
-            ) : (
-              <img
-                className={"navbar-user-logo"}
-                src={defaultUserLogo}
-                alt={"default"}
-              />
-            )}
-            <div className="navbar-button-text">Profile</div>
+              <div className="navbar-dropdown-button">
+                Report an issue <AnnouncementIcon />
+              </div>
+              <div className="navbar-dropdown-button" onClick={handleLogout}>
+                Logout
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="navbar-hamburger-container">
-        <div className="navbar-hamburger-button" onClick={handleOpenDropdown}>
-          <MenuIcon sx={{ fontSize: "35px" }} />
-          <div className="navbar-button-text">More</div>
-        </div>
-
-        <div
-          id="dropdown"
-          ref={domNode}
-          className={
-            openDropdown ? "dropdown-content-show" : "dropdown-content"
-          }
-        >
-          <div
-            className="navbar-dropdown-button"
-            onClick={() => navigateTo("/settings")}
-          >
-            Settings <SettingsIcon />
-          </div>
-
-          <DarkModeButton />
-
-          <div className="navbar-dropdown-button">
-            Report an issue <AnnouncementIcon />
-          </div>
-          <div className="navbar-dropdown-button" onClick={handleLogout}>
-            Logout
-          </div>
-        </div>
-      </div>
-    </div>
+      <CreateNewPostModal openModal={openModal} setOpenModal={setOpenModal} />
+    </>
   );
 };
 
